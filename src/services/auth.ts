@@ -23,7 +23,11 @@ const loginUser = async({email,password}:Auth) =>{
     const passwordIsCorrect = await verify(password,passwordHash);
     if(!passwordIsCorrect) return "PASSWORD_INCORRECT";
     const token = generateToken(checkIs.email);
-    return token;
+    const data = {
+        token,
+        user : checkIs
+    }
+    return data;
 
 }
 export {registerNewUser,loginUser}
